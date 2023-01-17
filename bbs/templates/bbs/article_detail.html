@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div>
+    <p>曲名：{{ article.title }}</p>
+    <p>歌手・バンド：{{ article.singer }}</p>
+    <p>作曲：{{ article.composition }}</p>
+    <p>リンク：<br><a href="{{ article.url }}">{{ article.url }}</a></p>
+    <p>コメント：<br>{{ article.content }}</p>
+    <p>{{ article.author }}</p>
+    <p>{{ article.created_at|date:"Y-m-j H:i:s" }}<br>
+    {{ article.updated_at|date:"Y-m-j H:i:s" }}</p>
+</div>
+<div class='mt-4'>
+    {% if request.user.id == object.author_id %}
+    <a href='{% url "bbs:update" article.pk %}'  class='btn btn-outline-primary mr-2'>編集</a>
+    {% endif %}
+
+    <a href='{% url "bbs:index" %}' class='btn btn-outline-primary'>一覧に戻る</a>
+
+    {% if request.user.id == object.author_id %}
+    <a href='{% url "bbs:delete" article.pk %}'  class='btn btn-danger ml-5'>削除</a>
+    {% endif %}
+</div>
+{% endblock %}
