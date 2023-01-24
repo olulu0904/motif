@@ -1,7 +1,9 @@
-{% extends '../layout.html' %}
+{% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
-<h1>Login</h1>
+<body style="background-image: url(../../bbs/static/img/アートボード\ login.png);">
+<h1 class="login_title">Login</h1>
 <section class='common-form'>
     {% if form.errors %}
         <p class='error-msg'>ユーザー名とパスワードが一致しません。もう一度入力しなおしてください。</p>
@@ -14,13 +16,39 @@
             <p class='error-msg'>このページにアクセスするためにはログインしてください。</p>
         {% endif %}
     {% endif %}
-
     <form action='{% url "login" %}' method='post'>
         {% csrf_token %}
         <input type='hidden' name='next' value='{{ next }}'/>
-        {{ form.as_p }}
-        <button type='submit'>Login</button>
+    <div>
+        <p>name：{{ form.username|add_class:'username' }}</p>
+        <p>password：{{ form.password|add_class:'password' }}</p>
+        <button type='submit' class="login_button">Login</button>
+    </div>
     </form>
     <p>新規登録は<a href='{% url "accounts:signup" %}'>こちら</a></p>
 </section>
+</body>
+<style>
+    .login_title {
+        padding-top: 74px;
+        padding-left: 78px;
+        width: 150px;
+        height: 70px;
+        font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-50)/70px Arial Black;
+        letter-spacing: var(--unnamed-character-spacing-0);
+        text-align: left;
+        font-family: "Arial Black", Gadget, "sans-serif";
+        font-size: 50px;
+        color: #FFFFFF;
+        letter-spacing: 0px
+    }
+    .username {
+        width: 221px;
+        height: 31px;
+    }
+    .password {
+        width: 221px;
+        height: 31px;
+    }
+    </style>
 {% endblock %}
