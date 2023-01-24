@@ -6,11 +6,8 @@
 
 <form action='' method='post'>
     {% csrf_token %}
-    <p>曲名：{{ form.title }}</p>
-    <p>歌手・バンド：{{ form.singer }}</p>
-    <p>作曲：{{ form.composition }}</p>
-    <p>リンク：{{ form.url }}</p>
-    <p>コメント：<br>
+    <p>タイトル：{{ form.title }}</p>
+    <p>本文：<br>
     {{ form.content }}</p>
     <button type='submit' class='submit btn btn-outline-primary'>{{ object|yesno:'更新,作成'}}</button>
 </form>

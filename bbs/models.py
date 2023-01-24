@@ -5,7 +5,7 @@ class Article(models.Model):
     title = models.CharField(max_length = 200)
     singer = models.CharField(max_length = 200)
     composition = models.CharField(max_length = 200)
-    url = models.URLField(max_length=200)
+    url = models.URLField(max_length = 200)
     content = models.TextField(max_length=1000)
 
     author = models.ForeignKey(

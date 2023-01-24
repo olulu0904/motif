@@ -1,0 +1,81 @@
+/*ホーム画面*/
+body {
+    background-image: url("../../img/アートボード\ 2.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center 0%;
+}
+.title {
+    color: white;
+    margin-top: 240px;
+    display: flex;
+    justify-content: center;/*真ん中に配置するコード*/
+    font-size: 150px;
+    font-family: "Arial Black", Gadget, "sans-serif";
+}
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login {/*ログインの文字*/
+    padding-top: 10px;
+	padding-bottom: 11px;
+	font: var(--unnamed-font-style-normal) normal medium 25px/43px YuGothic;
+    display: flex;
+	align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;/*リンクの下線をなくすコード*/
+	border: 1px solid #FFFFFF;/*枠の線*/
+    border-radius: 22px;
+    opacity: 1;
+	width: 153px;
+}
+.login:hover {
+    background: #fff;
+    background-color: rgba(255, 255, 255, 0.23);
+    color: white;
+  }
+.new_acount {/*新規会員登録*/
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-family: "Arial Black", Gadget, "sans-serif";
+    font-size: 10px;
+}
+.kotira {
+    display: flex;
+    justify-content: center;
+    color: aqua;
+    font-family: "Arial Black", Gadget, "sans-serif";
+    font-size: 10px;
+}
+.create {
+    margin-top: 312px;
+    display: flex;
+	align-items: center;
+    justify-content: center;
+    border: 1px solid var(--unnamed-color-707070);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 62px;
+    opacity: 1;
+    text-decoration: none;
+    font: var(--unnamed-font-style-normal) normal 800 16px/27px Toppan Bunkyu Midashi Gothic;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-000000);
+    text-align: left;
+    font: normal normal 800 16px/27px Toppan Bunkyu Midashi Gothic;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    padding-top: 10px;
+    padding-bottom: 11px;
+    width: 125px;
+}
+.create:hover {
+    background: #000000;
+    color: #fff;
+}
+/*ここまでがホーム画面*/
