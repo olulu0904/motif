@@ -1,7 +1,7 @@
 /*ホーム画面*/
 body {
     background-image: url("../../img/アートボード\ 2.png");
-    background-size: auto;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center 0%;
 }
@@ -77,5 +77,14 @@ body {
 .create:hover {
     background: #000000;
     color: #fff;
+}
+.container {
+    width: 633px;
+    height: 290px;
+    border: 1px solid var(--unnamed-color-707070);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 167px;
+    opacity: 1;
 }
 /*ここまでがホーム画面*/

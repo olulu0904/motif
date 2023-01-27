@@ -5,7 +5,9 @@
     <head>
         <style>
         body {
-            background-image: url("../../bbs/static/img/アートボード\ login.png");
+            background-image: url("../../static/img/login2.png");
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         .login_title {
             padding-top: 74px;
@@ -22,7 +24,7 @@
         }
         .group {
             top: 229px;
-            left: 84px;
+            margin-left: 84px;
             width: 619px;
             height: 310px;border: 1px solid var(--unnamed-color-707070);
             background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -44,9 +46,9 @@
             color: #000000;
             opacity: 1;
         }
-        .password1{
-            top: 373px;
-            left: 149px;
+        .password1 {
+            margin-top: 41px;
+            margin-left: 65px;
             width: 158px;
             height: 42px;
             font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 30px/42px Arial Black;
@@ -61,10 +63,56 @@
         .username {
             width: 221px;
             height: 31px;
+            margin-left: 102px;
+            border-radius: 26px;
+            border: 1px solid #707070;
         }
         .password {
             width: 221px;
             height: 31px;
+            margin-left: 34px;
+            border-radius: 26px;
+            border: 1px solid #707070;
+        }
+        .login_button {
+            width: 98px;
+            height: 27px;
+            margin-top: 25px;
+            margin-left: 310px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 1px solid #707070;
+            border-radius: 27px;
+            opacity: 1;
+            font: normal normal normal 14px/19px Arial Black;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
+        }
+        .login_acount{
+            width: 84px;
+            height: 7px;
+            margin-left: 320px;
+            font: normal normal normal 7px/10px Arial Black;
+            letter-spacing: 0px;
+            opacity: 1;
+        }
+        .login_kotira {
+            color: #317DD6;
+            text-decoration: none;
+        }
+        .error_msg_group {
+            margin-top: 50px;
+        }
+        .error-msg {
+            color: red;
+            display: inline; /* 背景色をテキストにのみ適用するため */
+            background-color: white; /* 背景色 */
+            margin-top: 500px;
+            padding: 10px 10px;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+            border-radius: 114px;
+            font: normal normal 800 16px/27px Toppan Bunkyu Midashi Gothic;
         }
         </style>
     </head>
@@ -72,27 +120,30 @@
 <h1 class="login_title">Login</h1>
 <div class="group">
 <section class='common-form'>
-    {% if form.errors %}
-        <p class='error-msg'>ユーザー名とパスワードが一致しません。もう一度入力しなおしてください。</p>
-    {% endif %}
-
-    {% if next %}
-        {% if user.is_authenticated %}
-            <p class='error-msg'>このアカウントではアクセスできません。</p>
-        {% else %}
-            <p class='error-msg'>このページにアクセスするためにはログインしてください。</p>
-        {% endif %}
-    {% endif %}
     <form action='{% url "login" %}' method='post'>
         {% csrf_token %}
         <input type='hidden' name='next' value='{{ next }}'/>
     <div>
-        <p class="name">name</p><nobr><p>{{ form.username|add_class:'username' }}</p></nobr>
-        <p class="password1">password<p>{{ form.password|add_class:'password' }}</p>
+        <p class="name"><nobr>name{{ form.username|add_class:'username' }}</nobr></p>
+        <p class="password1"><nobr>password{{ form.password|add_class:'password' }}</nobr></p>
         <button type='submit' class="login_button">Login</button>
     </div>
     </form>
-    <p>新規登録は<a href='{% url "accounts:signup" %}'>こちら</a></p>
+    <p class="login_acount">新規登録は<a href='{% url "accounts:signup" %}' class="login_kotira">こちら</a></p>
+    
+    <div class="error_msg_group">
+        {% if form.errors %}
+            <p class='error-msg'>ユーザー名とパスワードが一致しません。もう一度入力しなおしてください。</p>
+        {% endif %}
+    
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p class='error-msg'>このアカウントではアクセスできません。</p>
+            {% else %}
+                <p class='error-msg'>このページにアクセスするためにはログインしてください。</p>
+            {% endif %}
+        {% endif %}
+        </div>
 </section>
 </div>
 </body>
