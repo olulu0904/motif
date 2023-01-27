@@ -22,6 +22,10 @@
         <div class="box">
             <a href='{% url "bbs:create" %}'  class='create'>投稿する</a>
         </div>
+    {% else %}
+        <div class="box">
+            <a href='{% url "login" %}'  class='create'>投稿する</a>
+        </div>
     {% endif %}
 
     <table class='table table-striped table-hover'>

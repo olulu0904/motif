@@ -6,8 +6,13 @@
 
 <form action='' method='post'>
     {% csrf_token %}
-    <p>タイトル：{{ form.title }}</p>
-    <p>本文：<br>
+    <p>曲名：{{ form.title }}</p>
+    <p>歌手・バンド：{{ form.singer }}</p>
+    <p>作曲：{{ form.composition }}</p>
+    <p>リンク：{{ form.url }}</p>
+    <!--<p><iframe width="560" height="315" src="{{ article.url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+    -->
+        <p>コメント：<br>
     {{ form.content }}</p>
     <button type='submit' class='submit btn btn-outline-primary'>{{ object|yesno:'更新,作成'}}</button>
 </form>

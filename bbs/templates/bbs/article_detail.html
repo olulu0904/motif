@@ -3,8 +3,11 @@
 {% block content %}
 
 <div>
-    <p>タイトル：{{ article.title }}</p>
-    <p>投稿内容：<br>{{ article.content }}</p>
+    <p>曲名：{{ article.title }}</p>
+    <p>歌手・バンド：{{ article.singer }}</p>
+    <p>作曲：{{ article.composition }}</p>
+    <p><iframe width="560" height="315" src="{{ article.url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+    <p>コメント：<br>{{ article.content }}</p>
     <p>{{ article.author }}</p>
     <p>{{ article.created_at|date:"Y-m-j H:i:s" }}<br>
     {{ article.updated_at|date:"Y-m-j H:i:s" }}</p>
