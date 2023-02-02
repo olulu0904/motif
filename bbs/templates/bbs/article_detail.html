@@ -1,26 +1,57 @@
-{% extends 'layout.html' %}
+<html>
+    <head>
+        <title>詳細</title>
+        <style type="text/css">
+            body {
+                width: 800px;
+                height: 300px;
+                background-color: #ffffff;
+                background-image: url("../../static/img/kelly-sikkema-p44B3PKChs4-unsplash copy.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                }
+            .main {
+                width: 1135px;
+                height: 722px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                background-color: rgba(255,255,255,0.3);
+                border-radius: 124px;
+                }
+                div  p{
+                    width: 90%;
+                    text-align: center;
+                }
+                .mt-4 {
+                    width: 50%;
+                    text-align: center;
+                }
+        </style>
+    </head>
+    <body>
+        <div class='main'>
+            <p>曲名：{{ article.title }}</p>
+            <p>歌手・バンド：{{ article.singer }}</p>
+            <p>作曲：{{ article.composition }}</p>
+            <p><iframe width="560" height="315" src="{{ article.url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+            <p>コメント：<br>{{ article.content }}</p>
+            <p>{{ article.author }}</p>
+            <p>{{ article.created_at|date:"Y-m-j H:i:s" }}<br>
+            {{ article.updated_at|date:"Y-m-j H:i:s" }}</p>
+        </div>
+        <div class='mt-4'>
+            {% if request.user.id == object.author_id %}
+            <a href='{% url "bbs:update" article.pk %}' class='btn btn-outline-primary mr-2'>編集</a>
+            {% endif %}
 
-{% block content %}
+            <a href='{% url "bbs:index" %}' class='btn btn-outline-primary'>一覧に戻る</a>
 
-<div>
-    <p>曲名：{{ article.title }}</p>
-    <p>歌手・バンド：{{ article.singer }}</p>
-    <p>作曲：{{ article.composition }}</p>
-    <p><iframe width="560" height="315" src="{{ article.url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
-    <p>コメント：<br>{{ article.content }}</p>
-    <p>{{ article.author }}</p>
-    <p>{{ article.created_at|date:"Y-m-j H:i:s" }}<br>
-    {{ article.updated_at|date:"Y-m-j H:i:s" }}</p>
-</div>
-<div class='mt-4'>
-    {% if request.user.id == object.author_id %}
-    <a href='{% url "bbs:update" article.pk %}'  class='btn btn-outline-primary mr-2'>編集</a>
-    {% endif %}
-
-    <a href='{% url "bbs:index" %}' class='btn btn-outline-primary'>一覧に戻る</a>
-
-    {% if request.user.id == object.author_id %}
-    <a href='{% url "bbs:delete" article.pk %}'  class='btn btn-danger ml-5'>削除</a>
-    {% endif %}
-</div>
-{% endblock %}
+            {% if request.user.id == object.author_id %}
+            <a href='{% url "bbs:delete" article.pk %}' class='btn btn-danger ml-5'>削除</a>
+            {% endif %}
+        </div>
+    </body>
+</html>
