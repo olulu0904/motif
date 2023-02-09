@@ -1,23 +1,145 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html>
+<head>
+    <style>
+    body{
+        background-image: url("../../static/img/tintinberonberonjulljull.png");
+        background-size: cover;
+        background-repeat: no-repeat;
 
-{% block content %}
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    .tinpoko {
+        margin-top: 110px;
+        margin-left: 28px;
+        width: 700px;
+        height: 550px;
+        /* UI Properties */
+        border: 1px solid var(--unnamed-color-707070);
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #707070;
+        border-radius: 124px;
+        opacity: 1;
+    }
 
-<h1 class="mt-3 mb-4">{{ object|yesno:'投稿内容の更新,新規投稿の作成'}}</h1>
+    .form_title {
+        width: 221px;
+        height: 21px;
+        margin-top: -30px;
+        margin-left: 300px;
+        border-radius: 26px;
+        border: 1px solid #707070;
+    }
 
+    
+    .box {
+        margin-top: 50px;
+        margin-left: 100px;
+    }
+    .form_music {
+        margin-bottom: -50px;
+        margin-top: 16px;
+        margin-left: 120px;
+        font: normal normal normal 25px/50px Arial Black;
+        font-weight: bold;
+        color: black;
+    }
+
+    .form_music1 {
+        margin-bottom: -50px;
+        margin-top: 10px;
+        margin-left: 120px;
+        font: normal normal normal 25px/50px Arial Black;
+        font-weight: bold;
+        color: black;
+    }
+    /*.form_singer {
+        font: normal normal normal 25px/50px Arial Black;
+        font-weight: bold;
+        color: black;
+    }
+    .form_composition {
+        font: normal normal normal 25px/50px Arial Black;
+        font-weight: bold;
+        color: black;
+    }
+    .form_url {
+        font: normal normal normal 25px/50px Arial Black;
+        font-weight: bold;
+        color: black;
+    }*/
+    .comment {
+        font-size:  20px;
+        margin-top: 30px;
+        margin-left: 250px;
+        width: 600px;
+        height: 30px;
+    }
+   /*.comment_box {
+    font-size:  20px;
+    margin-top: -40px;
+    margin-left: 350px;
+    width: 600px;
+    height: 30px;
+   }*/
+
+   .create {
+    width: 121px;
+    height: 31px;
+    margin-top: 20px;
+    margin-left: 490px;
+    background-color: white;
+    color: black;
+    border-radius: 26px;
+    border: 1px solid black;
+   }
+   .create:hover {
+    background-color: #0000ff;
+    color: #FFFFFF;
+   }
+   .form_comment {
+        margin-bottom: -50px;
+        margin-top: 46px;
+        margin-left: 220px;
+        font: normal normal normal 22px/40px Arial Black;
+        font-weight: bold;
+        color: black;
+   }
+   .form_comt {
+        width: 221px;
+        height: 200px;
+        margin-top: 30px;
+        margin-left: 400px;
+        border-radius: 26px;
+        border: 1px solid #707070;
+    }
+ 
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="tinpoko">
 <form action='' method='post'>
     {% csrf_token %}
-    <p>曲名：{{ form.title }}</p>
-    <p>歌手・バンド：{{ form.singer }}</p>
-    <p>作曲：{{ form.composition }}</p>
-    <p>リンク：{{ form.url }}</p>
+<div class="box">
+    <p class="form_music1">曲名</p>{{ form.title|add_class:'form_title' }}
+    <p class="form_music">歌手・バンド</p>{{ form.singer|add_class:'form_title' }}
+    <p class="form_music">作曲</p>{{ form.composition|add_class:'form_title' }}
+    <p class="form_music">リンク</p>{{ form.url|add_class:'form_title' }}
+</div>
     <!--<p><iframe width="560" height="315" src="{{ article.url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
     -->
-        <p>コメント：<br>
-    {{ form.content }}</p>
-    <button type='submit' class='submit btn btn-outline-primary'>{{ object|yesno:'更新,作成'}}</button>
+        <p class="form_comment">コメント</p>{{ form.content|add_class:'form_comt' }}
+    <button type='submit' class='submit btn btn-outline-primary'></button><button class="create"> 作成</button>
 </form>
 <div class="mt-3">
-    <a href='JavaScript:history.back()' class='btn btn-outline-primary'>戻る</a>
+ 
 </div>
-
-{% endblock %}
+</div>
+</div>
+</body>
+</html>
